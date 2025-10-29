@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patagonia Waves - Patagonia Tours</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAVBAR - Color celeste/turquesa -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #00b4d8;">
+        <div class="container">
+            <!-- Logo con icono de olas -->
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <i class="fas fa-water fa-lg me-2"></i>
+                <div>
+                    <div class="fw-bold">Patagonia Waves</div>
+                    <div style="font-size: 0.7rem;">Patagonia Tours</div>
+                </div>
+            </a>
+            
+            <!-- Botón hamburguesa para móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Enlaces del menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#paquetes">Paquetes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#carrito">
+                            Carrito
+                            <span id="carrito-contador" class="badge bg-light text-dark ms-1">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+    <button id="btn-modo-oscuro" class="btn btn-sm ms-2" style="background-color: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 40px; height: 40px;">
+        <i class="fas fa-moon" style="color: white;"></i>
+    </button>
+</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- SECCIÓN HERO - Imagen de mar de fondo -->
+    <section id="inicio" class="hero-section position-relative">
+        <!-- La imagen de mar irá como background en CSS -->
+        <div class="hero-overlay d-flex align-items-center justify-content-center text-center">
+            <!-- Badge superior -->
+            <div class="hero-content">
+                <div class="badge bg-dark bg-opacity-75 px-4 py-2 mb-4">
+                    <i class="fas fa-compass me-2"></i>
+                    Experiencias Únicas en Patagonia y el Mundo
+                </div>
+                <h1 class="display-1 fw-bold text-white mb-3">Patagonia Waves</h1>
+                <p class="lead text-white fs-3 mb-4">Desde la costa patagónica hacia el mundo.</p>
+                
+                <!-- Botones de acción -->
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="#paquetes" class="btn btn-dark btn-lg rounded-pill px-4">
+                        <i class="fas fa-compass me-2"></i>
+                        Explora Nuestros Paquetes
+                    </a>
+                    <a href="#contacto" class="btn btn-light btn-lg rounded-pill px-4">
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCIÓN DE PAQUETES -->
+    <section id="paquetes" class="py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <!-- Badge y título -->
+            <div class="text-center mb-4">
+                <span class="badge" style="background-color: #00b4d8; font-size: 0.9rem;">
+                    <i class="fas fa-snowflake me-2"></i>
+                    Experiencias Inolvidables
+                </span>
+                <h2 class="display-5 fw-bold mt-3" style="color: #00b4d8;">Nuestros Paquetes</h2>
+                <p class="text-muted">Descubre destinos increíbles: turismo nacional, internacional e intercontinental</p>
+            </div>
+            
+            <!-- FILTROS Y BÚSQUEDA -->
+            <div class="card shadow-sm mb-4 border-0 rounded-4">
+                <div class="card-body p-4">
+                    <!-- Buscador -->
+                    <div class="mb-4">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-muted"></i>
+                            </span>
+                            <input type="text" id="buscar-paquete" class="form-control border-start-0" 
+                                   placeholder="Buscar tu aventura perfecta...">
+                        </div>
+                    </div>
+                    
+                    <!-- Filtros por categoría -->
+                    <div class="mb-3">
+                        <label class="text-muted mb-2">
+                            <i class="fas fa-filter me-2"></i>
+                            Filtrar por tipo de viaje:
+                        </label>
+                        <div class="d-flex flex-wrap gap-2" id="filtros-categoria">
+                            <button class="btn btn-filter active" data-categoria="todos" style="background-color: #00b4d8; color: white; border-radius: 20px;">
+                                <i class="fas fa-globe me-1"></i>
+                                Todos
+                            </button>
+                            <button class="btn btn-filter" data-categoria="nacional" style="background-color: #06d6a0; color: white; border-radius: 20px;">
+                                <i class="fas fa-flag me-1"></i>
+                                Nacional
+                            </button>
+                            <button class="btn btn-filter" data-categoria="internacional" style="background-color: #4361ee; color: white; border-radius: 20px;">
+                                <i class="fas fa-plane me-1"></i>
+                                Internacional
+                            </button>
+                            <button class="btn btn-filter" data-categoria="intercontinental" style="background-color: #ff9f1c; color: white; border-radius: 20px;">
+                                <i class="fas fa-earth-americas me-1"></i>
+                                Intercontinental
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Contador de paquetes -->
+                    <div class="text-muted">
+                        <span id="contador-paquetes">12</span> paquetes disponibles
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GRID DE PAQUETES -->
+            <div id="paquetes-grid" class="row g-4">
+                <!-- Los paquetes se generarán dinámicamente con JS -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCIÓN CARRITO -->
+    <section id="carrito" class="py-5">
+        <div class="container">
+            <!-- Badge y título -->
+            <div class="text-center mb-4">
+                <span class="badge" style="background-color: #00b4d8; font-size: 0.9rem;">
+                    <i class="fas fa-shopping-bag me-2"></i>
+                    Tu Selección
+                </span>
+                <h2 class="display-5 fw-bold mt-3" style="color: #00b4d8;">Carrito de Compras</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Lista del carrito (se llena dinámicamente) -->
+                    <div id="carrito-lista">
+                        <!-- Estado vacío -->
+                        <div id="carrito-vacio" class="card border-0 shadow-sm rounded-4 p-5 text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-shopping-bag" style="font-size: 4rem; color: #00b4d8; opacity: 0.3;"></i>
+                            </div>
+                            <h5>Tu carrito está vacío</h5>
+                            <p class="text-muted">Agrega algunos paquetes increíbles para comenzar tu aventura</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de total y acciones (oculto inicialmente) -->
+                    <div id="carrito-acciones" class="d-none mt-4">
+                        <div class="card border-0 shadow-sm rounded-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="mb-0">Total:</h4>
+                                    <h3 class="mb-0" style="color: #00b4d8;" id="carrito-total">$0</h3>
+                                </div>
+                                <button id="btn-whatsapp" class="btn btn-lg w-100 mb-3 rounded-pill" 
+                                        style="background-color: #25d366; color: white;">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Consultar por WhatsApp
+                                </button>
+                                <button id="btn-vaciar-carrito" class="btn btn-outline-danger btn-lg w-100 rounded-pill">
+                                    <i class="fas fa-trash-alt me-2"></i>
+                                    Vaciar Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <!-- Badge y título -->
+            <div class="text-center mb-4">
+                <span class="badge" style="background-color: #00b4d8; font-size: 0.9rem;">
+                    <i class="fas fa-envelope me-2"></i>
+                    Estamos Aquí Para Ti
+                </span>
+                <h2 class="display-5 fw-bold mt-3" style="color: #00b4d8;">Contacto</h2>
+                <p class="text-muted">¿Listo para tu próxima aventura? Contáctanos y diseñaremos la experiencia perfecta para ti</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Formulario -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <h5 class="mb-3">Envíanos un mensaje</h5>
+                            <p class="text-muted small mb-4">Completa el formulario y nos pondremos en contacto contigo</p>
+                            
+                            <form id="form-contacto">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control form-control-lg" id="nombre" 
+                                           placeholder="Juan Pérez" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control form-control-lg" id="email" 
+                                           placeholder="juan@ejemplo.com" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="mensaje" rows="4" 
+                                              placeholder="Cuéntanos sobre tu viaje ideal..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-lg w-100 rounded-pill" 
+                                        style="background-color: #00b4d8; color: white;">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Enviar Mensaje
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Información de contacto -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="mb-4">Información de Contacto</h5>
+                            
+                            <!-- Dirección -->
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; background-color: #00b4d8;">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Dirección</h6>
+                                    <p class="text-muted mb-0">Av.Roca 1700, Mimosa 36</p>
+                                    <p class="text-muted small">Puerto Madryn, Chubut, Argentina</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Teléfono -->
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; background-color: #00b4d8;">
+                                        <i class="fas fa-phone-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Teléfono</h6>
+                                    <p class="text-muted mb-0">+54 280 412-3456</p>
+                                    <p class="text-muted small">Lun - Vie: 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; background-color: #00b4d8;">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Email</h6>
+                                    <p class="text-muted mb-0">info@PatagoniaWaves.com</p>
+                                    <p class="text-muted small">Respuesta en 24 horas</p>
+                                </div>
+                            </div>
+                            
+                            <!-- ¿Por qué elegirnos? -->
+                            <div class="card mt-4" style="background-color: #00b4d8; border: none;">
+                                <div class="card-body text-white">
+                                    <h6 class="mb-3">¿Por qué elegirnos?</h6>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            Más de 15 años de experiencia
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            Guías especializados certificados
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            Grupos reducidos
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            Compromiso con la conservación
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="py-5 text-white" style="background-color: #1e3a5f;">
+        <div class="container">
+            <div class="row">
+                <!-- logo y descripción -->
+                <div class="col-lg-4 mb-4 mb-lg-0 text-center text-lg-start">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start mb-3">
+                        <i class="fas fa-water fa-2x me-2"></i>
+                        <div>
+                            <h5 class="mb-0">Patagonia Waves</h5>
+                            <small>Patagonia Tours</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- redes sociales -->
+                <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="#" class="text-white">
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </a>
+                        <a href="#" class="text-white">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                        <a href="#" class="text-white">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                        <a href="#" class="text-white">
+                            <i class="fas fa-envelope fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- creditos -->
+                <div class="col-lg-4 text-center text-lg-end">
+                    <p class="mb-1">Desarrollado en el colegio N°728 Alfonsina Storni por el Grupo 3</p>
+                    <p class="small text-white-50 mb-0">Axel Olguera • Josue Antual • Joaquin Perez • Lautaro Ambrosio</p>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-white opacity-25">
+            
+            <div class="text-center">
+                <p class="small text-white-50 mb-0">
+                    © 2025 Patagonia Waves - Todos los derechos reservados
+                </p>
+                <p class="small text-white-50 mb-0">
+                    Operador turístico habilitado • Registro Nacional de Turismo
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado -->
+    <script src="paquetes.js"></script>
+</body>
+</html>
